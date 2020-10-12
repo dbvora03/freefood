@@ -1,0 +1,29 @@
+{
+  "name": "freefood",
+  "version": "1.0.0",
+  "description": "A site for free food",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dbvora03/freefood.git"
+  },
+  "author": "Dhruv Vora",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dbvora03/freefood/issues"
+  },
+  "homepage": "https://github.com/dbvora03/freefood#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
