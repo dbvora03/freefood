@@ -18,6 +18,7 @@ mongoose.connect(
 require("./models/user")
 require("./models/post")
 
+
 app.use(express.json())
 
 //Connecting routes to the router folder

@@ -6,7 +6,7 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    body: {
+    description: {
         type:String,
         required:true
     },
@@ -18,6 +18,14 @@ const postSchema = new mongoose.Schema({
         type:ObjectId,
         ref:"User"
     },
+    dietaryinfo: {
+        type:String,
+        required:false
+    },
+    pickupBy: {
+        type:Date,
+        required:true
+    }
     
 })
 
