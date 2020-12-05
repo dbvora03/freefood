@@ -25,3 +25,11 @@ Detail view:
 - jwt tokens?
 - bcrypt?
 - Sending email or text message to confirm account ???
+- Log in using google business
+
+
+- Stats page or something like that
+- timer for are you there
+
+
+ANDROID APP !!!!!!!

@@ -12,21 +12,15 @@ const postSchema = new mongoose.Schema({
     },
     photo: {
         type:String,
-        default:"no photo"
+        required:true
     },
     author: {
         type:ObjectId,
         ref:"User"
-    },
-    dietaryinfo: {
-        type:String,
-        required:false
-    },
-    pickupBy: {
-        type:Date,
-        required:true
     }
     
-})
+}, {timestamps: true})
 
-mongoose.model("Post", postSchema)
+const Post = mongoose.model("Post", postSchema)
+
+module.exports = Post;

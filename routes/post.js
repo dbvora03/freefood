@@ -8,16 +8,20 @@ const Post = mongoose.model("Post")
 const requireLogin = require("../middlewares/requireLogin")
 
 router.get("/feed", (req, res)=> {
-    Post.find(/* Finds all posts*/).populate("author", "_id name").then((posts)=> {
+    Post.find().populate("author", "_id title").then((posts)=> {
         res.json({posts})
     }).catch((err) => {
         console.log(err)
     })
 })
 
-router.post("/createposting", requireLogin, (req,res)=> {
-    const {title, body} = req.body
-    if(!title || !body){
+
+
+
+router.post("/createpost", requireLogin, (req,res)=> {
+    const {title, body, pic} = req.body
+    console.log(title, body, pic)
+    if(!title || !body || !pic){
         //Checks to see if the post fields are filled
         res.status(422).json({error: "fill in the fields"})
     }
@@ -29,6 +33,7 @@ router.post("/createposting", requireLogin, (req,res)=> {
     const post = new Post({
         title,
         body,
+        photo:pic,
         author:req.user
     })
     //Saves, then returns the json of the saved object

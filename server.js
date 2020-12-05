@@ -3,6 +3,12 @@ const app = express()
 const mongoose = require("mongoose")
 const {MONGOURI} = require("./keys")
 const PORT = 5000
+//const cors = require('cors')
+
+//app.use(cors())
+//We dont need cors anymore because we are using the proxy command
+
+
 
 //Connecting mongoDB to the site
 mongoose.connect(
@@ -19,11 +25,16 @@ require("./models/user")
 require("./models/post")
 
 
+//Now we can use json features to respond and request with the server. DONT TOUCH
 app.use(express.json())
 
 //Connecting routes to the router folder
 app.use(require("./routes/auth"))
 app.use(require("./routes/post"))
+
+app.get('*', (req, res) => res.sendFile(path.resolve('client/build', 'index.html')));
+
+
 
 app.listen(PORT, () => {
     console.log("listening on port", PORT)
