@@ -4,7 +4,7 @@ const mongoose = require("mongoose")
 const User = mongoose.model("User")
 const bcrypt = require("bcryptjs")
 const jwt = require('jsonwebtoken')
-const {JWT_SECRET} = require("../keys")
+const {JWT_SECRET} = require("../config/keys")
 const requireLogin = require("../middlewares/requireLogin")
 
 // This file is for handeling sign ups and sign ins
@@ -14,7 +14,7 @@ router.post('/signup', (req, res, next) => {
     //On this url, whatever is responded to it, the cont will split the body into its constituent parts
     // WE NEED TO HAVE JSON RESPONDED IN THIS FORMAT LATER
 
-    const {name, email, password} = req.body
+    const {name, email, password, pic} = req.body
 
     while (!email || !password || !name) {
         
@@ -37,11 +37,12 @@ router.post('/signup', (req, res, next) => {
                 email:email,
                 password:hashedpassword,
                 name:name,
+                pic
             })
 
             //Adds this user to the MongoDB database
             user.save().then(user=> {
-                res.json({message:"saved"}).pretty(); //Check if pretty() works on MongoDB
+                res.json({message:"saved"}) //Check if pretty() works on MongoDB
             })
             .catch((err) => {
                 console.log(err)
@@ -67,8 +68,7 @@ router.post("/signin", (req, res, next)=> {
         
                 const token = jwt.sign({_id:savedUser._id}, JWT_SECRET)
                 const {_id, name, email} = savedUser
-                res.json({token:token, user:{_id, name, email}})
-                console.log(user)
+                res.json({token:token, user:{_id, name, email, pic}})
             }
             
 

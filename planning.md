@@ -21,15 +21,14 @@ Detail view:
 
 (for feed and detail view, render all of the post data, but only display whats needed)
 
-### Authentication ideas
+###  ideas
 - jwt tokens?
 - bcrypt?
 - Sending email or text message to confirm account ???
 - Log in using google business
-
-
 - Stats page or something like that
 - timer for are you there
+- loading page
 
 
 ANDROID APP !!!!!!!

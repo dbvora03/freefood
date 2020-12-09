@@ -20,7 +20,7 @@ const Routing = () => {
 
     if(user) {
       dispatch({type:"USER", payload:user})
-      history.push("/")
+      history.push("/feed")
     } else {
       history.push("/signin")
     }
@@ -29,7 +29,7 @@ const Routing = () => {
 
   return (
     <Switch>
-      <Route exact path="/"><Home /></Route>
+      <Route exact path="/feed"><Home /></Route>
       <Route path="/profile"><Profile /></Route>
       <Route path="/signin"><Signin /></Route>
       <Route path="/signup"><Signup /></Route>

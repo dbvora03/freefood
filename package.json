@@ -2,10 +2,11 @@
   "name": "freefood",
   "version": "1.0.0",
   "description": "A site for free food",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build ==prefix client"
   },
   "repository": {
     "type": "git",

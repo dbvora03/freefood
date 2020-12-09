@@ -12,6 +12,10 @@ const userSchema = new mongoose.Schema({
     password: {
         type:String,
         required:true
+    },
+    pic: {
+        type:String,
+        default: "https://res.cloudinary.com/dcjuakpsl/image/upload/v1607471207/NoProfile-Chef_zzyzzf.png"
     }
 })
 
