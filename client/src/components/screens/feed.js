@@ -1,6 +1,13 @@
 import React, {useState, useEffect, useContext} from 'react'
 //import { head } from '../../../../routes/auth'
 import { usercontext } from '../../App'
+import {
+    withScriptjs,
+    withGoogleMap,
+    GoogleMap,
+    Marker
+  } from "react-google-maps";
+
 
 
 const Home = () => {
@@ -58,24 +65,21 @@ const Home = () => {
                                     <span className="card-title grey-text text-darken-4">{item.title}<i className="material-icons right">close</i></span>
                                     <p>{item.description}</p>
                                     <h6>Dietary Information</h6>
-                                    <p>Nuts, eggs, dairy</p>
+                                    <p>{item.dietaryRestrict}</p>
                                     <h6>Location</h6>
-                                    {item.author._id === state._id && 
-                                    <i 
-                                        className="material-icons" 
-                                        style={{float:"right"}} 
-                                        onClick={()=>{
-                                            //console.log(item._id)
-                                            deletepost(item._id)
-                                        }}>delete</i>
+                                    <div>
+                                    <GoogleMap defaultZoom={8} defaultCenter={{ lat: item.lat, lng: item.lng }}>
+                                        <Marker position={{ lat: item.lat, lng: item.lng }}/>
+                                    </GoogleMap>
 
-                        }
+                                        <h6>Insert map in here</h6>
+                                    </div>≥
+                                    {item.author._id === state._id && <i className="material-icons" style={{float:"right"}} onClick={()=>{deletepost(item._id)}}>delete</i>}
                                 </div>
                             </div>
                         )
                     })
                 }
-
             </div>
         </div>
     )

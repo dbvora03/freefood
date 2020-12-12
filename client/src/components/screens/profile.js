@@ -20,12 +20,6 @@ const Profile = () => {
         })
     },[])
 
-
-
-
-
-
-
     useEffect(()=> {
         if(pic) {
             const data = new FormData()

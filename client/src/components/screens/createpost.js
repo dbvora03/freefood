@@ -11,6 +11,9 @@ const CreatePost = ()=> {
     const [description, setBody] = useState("");
     const [photo, setImage] = useState("");
     const [url, setURL] = useState("");
+    const [address, setAddress] = useState("")
+    const [dietaryRestrict, setDiet] = useState("")
+
     useEffect(()=>{
         if(url){
          fetch("/createpost",{
@@ -22,7 +25,9 @@ const CreatePost = ()=> {
              body:JSON.stringify({
                  title,
                  description,
-                 photo:url
+                 photo:url,
+                 address,
+                 dietaryRestrict
              })
          }).then(res=>res.json())
          .then(data=>{
@@ -70,18 +75,11 @@ const CreatePost = ()=> {
             padding:"20px",
             textAlign:"center"
         }}>
-            <input 
-            type="text"
-             placeholder="title"
-             value={title}
-             onChange={(e)=>setTitle(e.target.value)}
-             />
-            <input
-             type="text"
-              placeholder="body"
-              value={description}
-             onChange={(e)=>setBody(e.target.value)}
-              />
+            <input type="text" placeholder="title" value={title} onChange={(e)=>setTitle(e.target.value)}/>
+            <input type="text" placeholder="body" value={description} onChange={(e)=>setBody(e.target.value)}/>
+            <input type="text" placeholder="body" value={address} onChange={(e)=>setAddress(e.target.value)}/>
+            <input type="text" placeholder="body" value={dietaryRestrict} onChange={(e)=>setDiet(e.target.value)}/>
+
             <div className="file-field input-field">
                 <div className="btn #64b5f6 blue darken-1">
                     <span>Uplaod Image</span>
