@@ -5,6 +5,7 @@ import {usercontext} from '../App'
 const NavBar = ()=> {
     const {state, dispatch} = useContext(usercontext)
     const history = useHistory()
+    //Modifies bar based off of whether you are signed in or not
     function renderList(){
         if (state) {
             return [
@@ -21,13 +22,11 @@ const NavBar = ()=> {
         } else {
             return [
                 <li><Link to="/signup">Sign up</Link></li>,
-                <li><Link to="/signin">Sign in</Link></li>
+                <li><Link to="/signin">Sign in</Link></li>,
+                <button className="btn waves-effect waves-light" type="submit" name="action"><li><Link to="/guestfeed">Guest feed</Link></li></button>
             ]
         }
     }
-
-
-
 
 
     return(
@@ -35,9 +34,7 @@ const NavBar = ()=> {
             <div className="nav-wrapper teal">
             <Link to={state? "/feed": "/signin"} className="brand-logo right">FreeFood</Link>
                 <ul id="nav-mobile" className="left">
-                    {renderList()}
-                    <li><Link to="/search">Search</Link></li>
-                    <li><Link to="collapsible.html">About</Link></li>
+                    {renderList()}                    
                 </ul>
             </div>
         </nav>

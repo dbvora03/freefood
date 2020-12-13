@@ -31,7 +31,7 @@ router.post('/signup', (req, res, next) => {
         } 
 
         //Crypt the password
-        bcrypt.hash(password, 18).then(hashedpassword=> {
+        bcrypt.hash(password, 18).then(async hashedpassword=> {
             //Create a new instance of User, dont worry about hashed password, bcrypt should handle it.
             const user = new User({
                 email:email,
@@ -41,12 +41,8 @@ router.post('/signup', (req, res, next) => {
             })
 
             //Adds this user to the MongoDB database
-            user.save().then(user=> {
-                res.json({message:"saved"}) //Check if pretty() works on MongoDB
-            })
-            .catch((err) => {
-                console.log(err)
-            })
+            const daUser = await user.save()
+            res.json({message:"saved"})
         })
     })
 })
@@ -59,15 +55,19 @@ router.post("/signin", (req, res, next)=> {
         res.status(422).json({error: "add all of the fields please"})
     }
     
-    User.findOne({email:email}).then(savedUser=> {
+    //Checks if the user actually exists or not
+    User.findOne({email:email}).then(async savedUser=> {
         if (!savedUser) {
-            return res.status(422).json({error: "Invalid email or password, please sign up!"})
+            return await res.status(422).json({error: "Invalid email or password, please sign up!"})
         }
+        //Compares the hashed password to the one inputted
         bcrypt.compare(password, savedUser.password).then(doMatch=> {
             if(doMatch == true) {
         
+                //If they match, it will create a user token
                 const token = jwt.sign({_id:savedUser._id}, JWT_SECRET)
-                const {_id, name, email} = savedUser
+                const {_id, name, email, pic} = savedUser
+                //sends in both the token created and the user data
                 res.json({token:token, user:{_id, name, email, pic}})
             }
             
@@ -80,6 +80,7 @@ router.post("/signin", (req, res, next)=> {
     }).catch((err) => console.log("Its either that email dont exist, or the following error", err))
 })
 
+//May implement this later on
 router.get("/protected", requireLogin, (req, res)=> {
     res.send("logging you in")
 })

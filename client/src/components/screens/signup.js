@@ -11,6 +11,8 @@ const Signup = () => {
     const [address,setaddress] = useState("")
     const [pic, setImage] = useState("")
     const [url, setURL] = useState(undefined)
+
+    //Does all the submission stuff when the submission button is clicked
     useEffect(()=> {
         if(url) {
             uploadFields()
@@ -26,13 +28,13 @@ const Signup = () => {
         data.append("cloud_name","dcjuakpsl")
         console.log("line 48")
 
-        
+        //Fetches to cloudinary, it posts the photo to the database
         fetch("https://api.cloudinary.com/v1_1/dcjuakpsl/image/upload",{
             method:"post",
             body:data
         })
         .then(res=>res.json())
-        .then(data=>{
+        .then(data=>{ //returns an image address
            setURL(data.url)
         })
         .catch(err=>{
@@ -41,10 +43,13 @@ const Signup = () => {
     }
 
     const uploadFields = () => {
+        // Uses some regex to check if the email is actually a valid email or not. 
         if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
             M.toast({html: "invalid email"})
             return
         }
+
+        //Sends post request to back-end
         fetch("/signup", {
             method:"post",
             headers:{
@@ -56,11 +61,12 @@ const Signup = () => {
                 email,
                 pic:url
             })
-        }).then(res=>res.json()).then(data=>{
+        }).then(res=>res.json()).then(data=>{//Responds with status on whether it worked or not
            if(data.error){
                 M.toast({html:data.error})
             } else {
                 M.toast({html:"You have been signed up! Check your email!"})
+                //Takes you to signin right after
                 history.push('/signin')
             }
         }).catch(err=> {
@@ -90,8 +96,8 @@ const Signup = () => {
                 <input value={address} onChange={(e)=>setaddress(e.target.value)} type="text" placeholder="Address"/>
 
                 <div className="file-field input-field">
-                    <div className="btn #64b5f6 blue darken-1">
-                        <span>Upload Profile Pic</span>
+                    <div className="btn #64b5f6 darken-1">
+                        <span>Upload Logo</span>
                         <input type="file" onChange={(e)=>setImage(e.target.files[0])} />
                     </div>
                     <div className="file-path-wrapper">

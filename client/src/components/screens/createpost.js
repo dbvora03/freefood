@@ -14,8 +14,11 @@ const CreatePost = ()=> {
     const [address, setAddress] = useState("")
     const [dietaryRestrict, setDiet] = useState("")
 
+
     useEffect(()=>{
         if(url){
+            console.log("4")
+        //Sends all post details to the back-end
          fetch("/createpost",{
              method:"post",
              headers:{
@@ -31,12 +34,16 @@ const CreatePost = ()=> {
              })
          }).then(res=>res.json())
          .then(data=>{
-     
+            console.log("5")
+            //Now we know the condition of whether the post was made ot not. 
             if(data.error){
+                console.log("6")
                M.toast({html: data.error,classes:"#c62828 red darken-3"})
             }
             else{
+                console.log("7")
                 M.toast({html:"Created post Successfully",classes:"#43a047 green darken-1"})
+                //Takes you to the feed right after
                 history.push('/feed')
             }
          }).catch(err=>{
@@ -44,81 +51,67 @@ const CreatePost = ()=> {
          })
      }
      },[url])
- 
+
+
      const uploadFile = ()=>{
+
+        // Parses the data needed to send photo to cloudinary
         const data = new FormData()
         data.append("file",photo)
         data.append("upload_preset","bongumusa")
         data.append("cloud_name","dcjuakpsl")
-        console.log("line 48")
+        console.log("1")
 
-        
+        //Sends data to cloudinary
         fetch("https://api.cloudinary.com/v1_1/dcjuakpsl/image/upload",{
             method:"post",
             body:data
         })
-        .then(res=>res.json())
-        .then(data=>{
+        .then(res=>res.json()) 
+        .then(data=>{ //gets a URL in return. This URL can be used inside the src html tag
            setURL(data.url)
+           console.log("3")
         })
         .catch(err=>{
             console.log("Line 58 error", err)
         })
-    
-     
     }
-    return(
+ 
+    return(<> 
+        <div class="row" style={{maxWidth:"500px",padding:"20px",textAlign:"center"}}>
+            <div class="col s12 m5">
+                <div class="card-panel">
+                    <h3>Create a posting</h3>
+                </div>
+            </div>
+        </div>
         <div className="card input-filed"
-        style={{
-            margin:"30px auto",
-            maxWidth:"500px",
-            padding:"20px",
-            textAlign:"center"
-        }}>
+        style={{margin:"30px auto",maxWidth:"500px",padding:"20px",textAlign:"center"}}>
+
             <input type="text" placeholder="title" value={title} onChange={(e)=>setTitle(e.target.value)}/>
-            <input type="text" placeholder="body" value={description} onChange={(e)=>setBody(e.target.value)}/>
-            <input type="text" placeholder="body" value={address} onChange={(e)=>setAddress(e.target.value)}/>
-            <input type="text" placeholder="body" value={dietaryRestrict} onChange={(e)=>setDiet(e.target.value)}/>
+            <input type="text" placeholder="description" value={description} onChange={(e)=>setBody(e.target.value)}/>
+            <input type="text" placeholder="address" value={address} onChange={(e)=>setAddress(e.target.value)}/>
+            <input type="text" placeholder="allergen information" value={dietaryRestrict} onChange={(e)=>setDiet(e.target.value)}/>
 
             <div className="file-field input-field">
-                <div className="btn #64b5f6 blue darken-1">
-                    <span>Uplaod Image</span>
+                <div className="btn #64b5f6 teal darken-1">
+                    <span>Upload Image</span>
                     <input type="file" onChange={(e)=>setImage(e.target.files[0])} />
                 </div>
                 <div className="file-path-wrapper">
                     <input className="file-path validate" type="text" />
                 </div>
              </div>
-             <button className="btn waves-effect waves-light #64b5f6 blue darken-1"
+             <button className="btn waves-effect waves-light #64b5f6 teal darken-1"
              onClick={()=>uploadFile()}>
                  Submit post
              </button>
  
         </div>
+        </>
     )
 
-    /*
-    return(
-        <div>
-            <h3 style={{textAlign:"center"}}>Create a posting</h3>
-            <div className="card input-file" style={{margin:"10px auto", maxWidth:"500px", padding:"20px"}}>
-                <input value={title} onChange={(e)=>setTitle(e.target.value)} type="text" placeholder="title"/>
-                <input value={body} onChange={(e)=>setBody(e.target.value)} type="text" placeholder="description"/>
 
-                <div className="file-field input-field">
-                    <div className="btn">
-                        <span>Upload photo</span>
-                        <input onChange={(e)=> setImage(e.target.files[0])} type="file"/>
-                    </div>
-                    <div className="file-path-wrapper">
-                        <input className="file-path validate" type="text"/>
-                    </div>
-                </div>
-            </div>               
-            <button onClick={()=>uploadFile()} style={{margin:"10px auto", justifyContent:"center", alignContent:"center", display:"flex", width:"90px", height:"35px"}}className="btn waves-effect waves-light" type="submit" name="action">Post </button>
-        </div>
-    )
-*/
 
 }
 

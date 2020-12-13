@@ -11,6 +11,7 @@ const Signin = () => {
 
     const PostData = ()=> {
 
+        //Sends a post request to the backend
         fetch("/signin", {
             method:"post",
             headers:{
@@ -25,10 +26,17 @@ const Signin = () => {
            if(data.error){
                 M.toast({html:data.error})
             } else {
+                //Front end now makes access to the token by acquiring it from back end. 
                 localStorage.setItem("jwt", data.token)
+                // JSON version of the user data is now in our hands
                 localStorage.setItem("user", JSON.stringify(data.user))
+
+                //We need to use a reducer to get rid of data and have just the user part of it. 
+                // Then we need to make the state equivalent to the userdata in order to use it in other pages
                 dispatch({type:"USER", payload:data.user})
                 M.toast({html:"Logging you in!"})
+
+                // after signing in, it takes you to the feed
                 history.push('/feed')
             }
         }).catch(err=> {

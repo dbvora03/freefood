@@ -1,4 +1,5 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const nodemon = require("nodemon");
 const {ObjectId} = mongoose.Schema.Types
 
 const postSchema = new mongoose.Schema({
@@ -13,6 +14,18 @@ const postSchema = new mongoose.Schema({
     photo: {
         type:String,
         required:true
+    },
+    lat:{
+        type:Number,
+        required:true
+    },
+    lng:{
+        type:Number,
+        required:true
+    },
+    dietaryRestrict: {
+        type: String,
+        default: "None"
     },
     author: {
         type:ObjectId,
