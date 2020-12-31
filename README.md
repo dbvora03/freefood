@@ -18,7 +18,8 @@ If you are a business that wants to post food, you can follow the sign up link. 
 
 ## Demo Video
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/mWsUzNfDuVg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![](http://img.youtube.com/vi/mWsUzNfDuVg/0.jpg)](http://www.youtube.com/watch?v=mWsUzNfDuVg "Free Food demo")
+> Click on the video to see the full thing!
 
 
 
