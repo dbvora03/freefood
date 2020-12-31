@@ -21,7 +21,11 @@ If you are a business that wants to post food, you can follow the sign up link. 
 [![](http://img.youtube.com/vi/mWsUzNfDuVg/0.jpg)](http://www.youtube.com/watch?v=mWsUzNfDuVg "Free Food demo")
 > Click on the video to see the full thing!
 
+## Demo Pictures
 
+![Picture 1](feedpics1.png)
+
+![Picture 2](feedpics3.png)
 
 ## Prerequisites
 
@@ -38,5 +42,19 @@ module.exports = {
 ```
 > You can add the `dev.js` inside of `config/`
 
+## Technologies
+
+Some of the main technologies I used to develop this project include: 
+- MongoDB
+- ExpressJS
+- ReactJS
+- NodeJS
+- Cloudinary
 
 
+## What's next?
+
+- Adding two factor authentication
+- Speeding up log in and sign up service times
+- Developing a chatting app to communicate unregistered users with signed up businesses
+- Expiration tokens for posts
