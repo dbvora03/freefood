@@ -9,6 +9,7 @@ const Home = () => {
     const [data, setData] = useState([])
     const {state, dispatch} = useContext(usercontext)
 
+
     useEffect(()=> {
         console.log("a")
         //Get request to the back end
@@ -82,6 +83,7 @@ const Home = () => {
                                     <h6>Location</h6>
                                     <div>
                                         <h6>Insert map in here</h6>
+                                   
                                     </div>
                                 </div>
                             </div>
