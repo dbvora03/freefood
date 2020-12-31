@@ -16,6 +16,12 @@ If you are a business that wants to post food, you can follow the sign up link. 
 - User management to separate posts by user. 
 - A REST API built with ExpressJS and NodeJS to retrieve, add, and update posts and profiles. 
 
+## Demo Video
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mWsUzNfDuVg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
 ## Prerequisites
 
 Before you clone/fork, ensure you have met the following requirements:

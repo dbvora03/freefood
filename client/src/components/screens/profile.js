@@ -6,7 +6,7 @@ import {usercontext} from "../../App"
 const Profile = () => {
     const [mypics, setPics] = useState([])
     const {state, dispatch} = useContext(usercontext)
-    const [pic, setImage] = useState("")
+    const [image, setImage] = useState("")
     //const [url, setURL] = useState("")
 
     useEffect(()=>{
@@ -23,11 +23,11 @@ const Profile = () => {
 
     useEffect(()=> {
         //If picture really exists
-        if(pic) {
+        if(image) {
 
             //Formtatting photo to be sent to cloudinary
             const data = new FormData()
-            data.append("file",pic)
+            data.append("file",image)
             data.append("upload_preset","bongumusa")
             data.append("cloud_name","dcjuakpsl")
             console.log("line 48")
@@ -44,18 +44,19 @@ const Profile = () => {
                 fetch("/updatepic", {
                     method:"PUT",
                     headers:{
-                        "Content-Type":"application",
+                        "Content-Type":"application/json",
                         "Authorization": "Bearer " + localStorage.getItem("jwt")
                     },
-                    body: JSON.stringify({
+                    body:JSON.stringify({
                         pic:data.url,
                     })
                     //Now, it returns the new user data. We dont really need all of it, just a bit of state and the new picture
                 }).then(res=> res.json()).then(result=> {
+                    console.log(result)
                     localStorage.setItem("user", JSON.stringify({...state, pic:result.pic})) //Spread is used to lay out all of state, then pic is added
                     
                     //updates the state using the reducer
-                    dispatch({type:"UPDATEPIC", payload:result.url})
+                    dispatch({type:"UPDATEPIC", payload:result.pic})
                 })
 
                 //window.location.reload()
@@ -64,7 +65,7 @@ const Profile = () => {
                 console.log("Line 58 error", err)
             })
         }
-    },[pic])
+    },[image])
     const updatePFP = (file) => {
         setImage(file)
     }
@@ -91,7 +92,7 @@ const Profile = () => {
                                 </div>
                                 <div class="file-path-wrapper">
                                 <input class="file-path validate" onChange={(e)=>{
-                                    setImage(e.target.files[0]) 
+                                    updatePFP(e.target.files[0]) 
                                     window.location.reload()
                                     }}type="text"/>
                                 </div>

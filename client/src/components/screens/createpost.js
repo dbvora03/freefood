@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import M from 'materialize-css'
 import {useHistory} from 'react-router-dom'
-const url = require("url")
+
 // Assigned cloud name is dcjuakpsl    save for later !!!!!
 
 

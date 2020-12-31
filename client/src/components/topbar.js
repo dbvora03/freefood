@@ -21,9 +21,9 @@ const NavBar = ()=> {
             ]
         } else {
             return [
+                <button className="btn waves-effect waves-light" type="submit" name="action"><li><Link to="/guestfeed">Guest feed</Link></li></button>,
                 <li><Link to="/signup">Sign up</Link></li>,
-                <li><Link to="/signin">Sign in</Link></li>,
-                <button className="btn waves-effect waves-light" type="submit" name="action"><li><Link to="/guestfeed">Guest feed</Link></li></button>
+                <li><Link to="/signin">Sign in</Link></li>
             ]
         }
     }

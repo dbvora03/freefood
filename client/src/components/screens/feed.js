@@ -73,7 +73,7 @@ const Home = () => {
                                     <span className="card-title grey-text text-darken-4"style={{marginBottom:"0"}}>{item.title}<i className="material-icons right">close</i></span>
                                     {item.author._id === state._id && <i className="material-icons" style={{float:"right"}} onClick={()=>{deletepost(item._id)}}>delete</i>}
                                     <div className="card-content" style={{padding:"9px"}}>
-                                        <img src={state?state.pic: "loading Profile Pic"} style={{width:"80px", height:"80px", marginTop:"0px",borderRadius:"80px", display: "block", marginLeft: "auto", marginRight: "auto"}}></img>
+                                        <img src={item.author.pic} style={{width:"80px", height:"80px", marginTop:"0px",borderRadius:"80px", display: "block", marginLeft: "auto", marginRight: "auto"}}></img>
                                         <h5 style={{ textAlign:"center"}}>{item.author.name}</h5>
                                     </div>
                                     <p>{item.description}</p>
