@@ -2,14 +2,16 @@ const express = require("express")
 const app = express()
 const mongoose = require("mongoose")
 const {MONGOURI} = require("./config/keys")
-const PORT = process.env.PORT || 5000
-const cors = require('cors')
+
 require('dotenv').config()
+const PORT = process.env.PORT || 4949
+const cors = require('cors')
+
 
 app.use(cors())
 //We dont need cors anymore because we are using the proxy command
 
-
+app.use(express.static('client/build'))
 
 //Connecting mongoDB to the site
 mongoose.connect(
@@ -35,18 +37,8 @@ app.use(require("./routes/post"))
 
 
 // Allows the server to use static files during production
-/*
-if(process.env.NODE_ENV=="production") {
-    app.use(express.static('client/build'))
-    const path = require("path")
-    app.get('*', (req, res) => res.sendFile(path.resolve(__dirname,'client','build', 'index.html')));
-}
 
-
-app.get('*', (req, res) => res.sendFile(path.resolve('client/build', 'index.html')));
-*/
-
-app.listen(process.env.PORT, () => {
+app.listen(PORT, () => {
     console.log("listening on port", PORT)
 })
 
