@@ -3,9 +3,9 @@ const app = express()
 const mongoose = require("mongoose")
 const {MONGOURI} = require("./config/keys")
 const PORT = process.env.PORT || 5000
-//const cors = require('cors')
+const cors = require('cors')
 
-//app.use(cors())
+app.use(cors())
 //We dont need cors anymore because we are using the proxy command
 
 
@@ -41,7 +41,7 @@ if(process.env.NODE_ENV=="production") {
 }
 
 
-//app.get('*', (req, res) => res.sendFile(path.resolve('client/build', 'index.html')));
+app.get('*', (req, res) => res.sendFile(path.resolve('client/build', 'index.html')));
 
 app.listen(PORT, () => {
     console.log("listening on port", PORT)
