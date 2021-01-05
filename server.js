@@ -34,6 +34,7 @@ app.use(require("./routes/post"))
 
 
 // Allows the server to use static files during production
+/*
 if(process.env.NODE_ENV=="production") {
     app.use(express.static('client/build'))
     const path = require("path")
@@ -42,6 +43,7 @@ if(process.env.NODE_ENV=="production") {
 
 
 app.get('*', (req, res) => res.sendFile(path.resolve('client/build', 'index.html')));
+*/
 
 app.listen(PORT, () => {
     console.log("listening on port", PORT)
