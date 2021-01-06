@@ -22,3 +22,7 @@
 .item {
     width:30%
 }
+
+.card {
+    margin: 0 !important;
+}

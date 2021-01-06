@@ -88,7 +88,7 @@ const Signup = () => {
 
     return (
         <div className="mycard">
-            <div className="card auth-card">
+            <div className="card auth-card" style={{margin:"0"}}>
                 <h2>Signup below!</h2>
                 <input value={name} onChange={(e)=>setName(e.target.value)} type="text" placeholder="Company Name"/>
                 <input value={email} onChange={(e)=>setemail(e.target.value)} type="text" placeholder="Email"/>
