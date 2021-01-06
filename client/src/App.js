@@ -31,7 +31,7 @@ const Routing = () => {
     } else {
       history.push("/signin")
     }
-  },[/* Whenever anything happens, you run useEffect */ ])
+  },[])
 
 
   return (
