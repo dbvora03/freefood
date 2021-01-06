@@ -35,10 +35,17 @@ app.use(express.json())
 app.use(require("./routes/auth"))
 app.use(require("./routes/post"))
 
-
+/*
 app.use(express.static('client/build'))
 
 app.get('*', (req, res) => res.sendFile(path.resolve(__dirname,'client','build', 'index.html')));
+*/
+
+app.use(express.static(path.join(__dirname, '/client/build')));
+
+app.get('*', (req, res) => {
+res.sendFile(path.join((__dirname, '/client/build/index.html')));
+});
 
 // Allows the server to use static files during production
 
