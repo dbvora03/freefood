@@ -60,7 +60,6 @@ const CreatePost = ()=> {
         data.append("file",photo)
         data.append("upload_preset","bongumusa")
         data.append("cloud_name","dcjuakpsl")
-        console.log("1")
 
         //Sends data to cloudinary
         fetch("https://api.cloudinary.com/v1_1/dcjuakpsl/image/upload",{
