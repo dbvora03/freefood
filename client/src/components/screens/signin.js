@@ -45,7 +45,7 @@ const Signin = () => {
     }
     return (
         <div className="mycard">
-            <div className="card auth-card" style={{margin:"0"}}>
+            <div className="card auth-card">
                 <h2>Welcome to FreeFood</h2>
                 <input value={email} onChange={(e)=>setemail(e.target.value)} type="text" placeholder="Email"/>
                 <input value={password} onChange={(e)=>setpassword(e.target.value)} type="password" placeholder="Password"/>

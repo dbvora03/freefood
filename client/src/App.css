@@ -2,7 +2,7 @@
     padding: 20px;
     text-align: center;
     max-width: 400px;
-    margin: 10px auto;
+    margin: 10px auto !important;
 }
 
 .mycard {
@@ -21,8 +21,4 @@
 
 .item {
     width:30%
-}
-
-.card {
-    margin: 0 !important;
 }
