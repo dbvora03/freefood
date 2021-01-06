@@ -34,6 +34,7 @@ app.use(express.json())
 //Connecting routes to the router folder
 app.use(require("./routes/auth"))
 app.use(require("./routes/post"))
+app.use(require("./routes/user"))
 
 /*
 app.use(express.static('client/build'))

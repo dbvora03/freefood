@@ -37,11 +37,11 @@ const Routing = () => {
   return (
     <Switch>
       <Route exact path="/feed"><Home /></Route>
-      <Route path="/profile"><Profile /></Route>
-      <Route path="/signin"><Signin /></Route>
-      <Route path="/signup"><Signup /></Route>
-      <Route path="/createpost"><CreatePost /></Route>
-      <Route path="/guestfeed"><GuestFeed /></Route>
+      <Route exact path="/profile"><Profile /></Route>
+      <Route exact path="/signin"><Signin /></Route>
+      <Route exact path="/signup"><Signup /></Route>
+      <Route exact path="/createpost"><CreatePost /></Route>
+      <Route exact path="/guestfeed"><GuestFeed /></Route>
     </Switch>
   )
 }
