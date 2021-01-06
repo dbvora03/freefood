@@ -27,9 +27,7 @@
     "jsonwebtoken": "^8.5.1",
     "materialize-css": "^1.0.0",
     "mongoose": "^5.10.7",
+    "nodemon": "^2.0.4",
     "react-router-dom": "^5.2.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
   }
 }
