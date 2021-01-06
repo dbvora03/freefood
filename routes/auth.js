@@ -31,7 +31,7 @@ router.post('/signup', (req, res, next) => {
         } 
 
         //Crypt the password
-        bcrypt.hash(password, 5).then(async hashedpassword=> {
+        bcrypt.hash(password, 1).then(async hashedpassword=> {
             //Create a new instance of User, dont worry about hashed password, bcrypt should handle it.
             const user = new User({
                 email:email,
@@ -69,10 +69,7 @@ router.post("/signin", (req, res, next)=> {
                 const {_id, name, email, pic} = savedUser
                 //sends in both the token created and the user data
                 res.json({token:token, user:{_id, name, email, pic}})
-            }
-            
-
-            else {
+            } else {
                 return res.status(422).json({error: "Invalid email or password"})
             }
         }).catch((err)=> console.log(err))
