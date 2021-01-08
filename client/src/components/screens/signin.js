@@ -40,7 +40,7 @@ const Signin = () => {
                 history.push('/feed')
             }
         }).catch(err=> {
-            console.log("Bro please" ,err)
+            console.log("Point 1: " ,err)
         })
     }
     return (

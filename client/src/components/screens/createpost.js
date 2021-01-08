@@ -17,7 +17,7 @@ const CreatePost = ()=> {
 
     useEffect(()=>{
         if(url){
-            console.log("4")
+
         //Sends all post details to the back-end
          fetch("/createpost",{
              method:"post",
@@ -34,14 +34,11 @@ const CreatePost = ()=> {
              })
          }).then(res=>res.json())
          .then(data=>{
-            console.log("5")
             //Now we know the condition of whether the post was made ot not. 
             if(data.error){
-                console.log("6")
                M.toast({html: data.error,classes:"#c62828 red darken-3"})
             }
             else{
-                console.log("7")
                 M.toast({html:"Created post Successfully",classes:"#43a047 green darken-1"})
                 //Takes you to the feed right after
                 history.push('/feed')

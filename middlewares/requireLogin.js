@@ -15,7 +15,7 @@ module.exports = (req, res, next)=> {
         const token = authorization.replace("Bearer ", "")
 
         //Checks to see if the tokens are matched and not tampered with
-        jwt.verify(token,"hi",(err,payload)=>{
+        jwt.verify(token,process.env.JWT_SECRET,(err,payload)=>{
             if(err) {
                 return res.status(401).json({error: "you must be logged in"})
             }

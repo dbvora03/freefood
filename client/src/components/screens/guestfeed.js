@@ -6,12 +6,12 @@ const GuestFeed = () => {
     const [data, setData] = useState([])
     
     useEffect(()=>{
-        console.log("a")
+
         //Get request to the back end
         fetch('/guestfeed').then(res=>res.json()).then(result => {
             // Gets all of the posts needed, they are in array form, so data is an array
             setData(result.posts)
-            console.log("b")
+
         })
     },[])
 

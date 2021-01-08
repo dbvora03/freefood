@@ -65,7 +65,7 @@ router.post("/signin", (req, res, next)=> {
             if(doMatch == true) {
         
                 //If they match, it will create a user token
-                const token = jwt.sign({_id:savedUser._id}, "hi")
+                const token = jwt.sign({_id:savedUser._id}, process.env.JWT_SECRET)
                 const {_id, name, email, pic} = savedUser
                 //sends in both the token created and the user data
                 res.json({token:token, user:{_id, name, email, pic}})

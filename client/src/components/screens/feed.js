@@ -11,7 +11,7 @@ const Home = () => {
 
 
     useEffect(()=> {
-        console.log("a")
+  
         //Get request to the back end
         fetch('/feed', {
             headers: {
@@ -20,14 +20,13 @@ const Home = () => {
         }).then(res=>res.json()).then(result => {
             // Gets all of the posts needed, they are in array form, so data is an array
             setData(result.posts)
-            console.log("b")
+ 
         })
     },[])
 
 
     const deletepost = (postid)=>{
-        console.log("c")
-        console.log(postid)
+
         //Sends delete request to back-end on a specific post. postid is a paramter
         fetch(`/deletepost/${postid}`,{
             method:"delete",
@@ -36,13 +35,13 @@ const Home = () => {
             }
         }).then(res=>res.json())
         .then(result=>{
-            console.log("d")
-            console.log(result)
+     
+       
             //New data is filtered out to include everything except the post deleted
             const newData = data.filter(item=>{
                 return item._id !== result._id
             })
-            console.log("e")
+         
             setData(newData)
         })
     }
